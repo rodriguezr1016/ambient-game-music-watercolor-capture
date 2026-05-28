@@ -26,16 +26,18 @@ export function secondsForRhythm(duration: RhythmValue, tempo: number) {
 }
 
 export class MelodyEngine {
+  private preset: StylePreset
+  private random: Random
   private chordIndex = 0
   private lastMidi = 60
   private motif: number[] = []
   private phraseStep = 0
   private arpStepsLeft = 0
 
-  constructor(
-    private preset: StylePreset,
-    private random: Random = Math.random,
-  ) {}
+  constructor(preset: StylePreset, random: Random = Math.random) {
+    this.preset = preset
+    this.random = random
+  }
 
   setPreset(preset: StylePreset) {
     this.preset = preset
